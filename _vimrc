@@ -1,22 +1,15 @@
-set clipboard=unnamed
+set number
+set clipboard=unnamedplus
+set mouse=a
 
-let g:javascript_plugin_jsdoc = 1
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
 
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
+call plug#begin('~/.vim/plugged')
 
-autocmd VimEnter * call StartUp() " SE INICIAR SEM NENHUM ARQUIVO ESPECÍFICO, AUTOMATICAMENTE ABRE O NERDTREE
-au GUIEnter * simalt ~x " ENTRA EM MODO TELA CHEIA
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-surround'
 
-call plug#begin()
-Plug '/scrooloose/nerdtree'
-Plug 'omnisharp/omnisharp-vim'
-Plug 'pangloss/vim-javascript'
 call plug#end()
+
+
+" Open nerdtree
+autocmd VimEnter * if argc() == 0 | NERDTree | endif
